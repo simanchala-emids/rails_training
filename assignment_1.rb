@@ -20,29 +20,28 @@ class Customer
     end
 
    def removePoints(a)
-    @points  = @points-a
+    @points  = @points - a
    end
 
-      def display 
+    def display
         $count =  $count + 1
-       
         puts "…………………………… Customer: #{$count} ID: #{@id}  Name: #{@name} Points: #{@points} Group: null "
-      end
+    end
 
     def self.getBest(get_arr)
-
      m = get_arr.max
      puts "MAX: #{m}"
     end
     
     def self.calAvg(get_arr)
-      avg = get_arr.sum/$count
+      sum = get_arr.inject(:+)
+      avg = sum/$count
     end
  
-      def self.displayAvg(val)
+    def self.displayAvg(val)
           avg = val
-         puts "Average value is #{avg}"
-     end
+         puts "Average of points  is #{avg}"
+    end
 
 end
 
@@ -53,12 +52,12 @@ class Test
     arr = []
 
     c0 = Customer.new(1543 ,"Nimal")
-    c0.addPoints(100)
+    c0.addPoints(129)
     arr << c0.points
     c0.display
 
     c1 = Customer.new(6561,"Saman")
-    c1.addPoints(200)
+    c1.addPoints(785)
     b = c1.upgradePoints(2)
     arr << c1.points
     c1.display
@@ -83,15 +82,18 @@ class Test
     Customer.displayAvg(a)
     Customer.getBest(arr) # highest number of points using the method getBest
 
-    cust = c4   #reference variable called cust of type Customer. 
+    cust = Customer.new(1543 ,"Nimal")
+    cust = c4 #reference variable called cust of type Customer.
     cust.display
-    cust.removePoints(a)
+    cust.removePoints(2000)
     cust.display
-    cust = c3 #Copy the values of the attributes of the fourth customer 
+
+    cust1 = Customer.new(1 ,"Raghu")
     cust1 = cust
-    cust1 = nil
-    # cust1.id 
-    end
+    # cust = nil
+    # cust1.id
+    # end
+  end
 end
 
  t = Test.new
