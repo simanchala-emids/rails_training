@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'sample/show'
+  get 'demo/surenthar', to: 'demo#index';
+  get 'demo/index';
+  # get 'sample/index';
+  get ':controller(/:action(/:id))';
+  root 'demo#index';
 end
